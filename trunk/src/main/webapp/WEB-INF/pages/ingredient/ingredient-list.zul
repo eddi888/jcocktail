@@ -1,0 +1,10 @@
+<?page title="Zutat" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Zutaten-Liste" border="normal" apply="de.atomspace.webapp.component.ingredient.IngredientComposer" >
+<hbox>
+<textbox value="SEARCH..." /> <menubar id="naviBar" width="100%" />
+</hbox>
+<listbox id="listBox" />
+
+</window>
+</zk>

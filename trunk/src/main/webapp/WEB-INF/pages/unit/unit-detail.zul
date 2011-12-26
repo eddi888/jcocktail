@@ -1,0 +1,6 @@
+<?page title="unit-detail" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="unit-detail" border="normal">
+New Content Here!
+</window>
+</zk>

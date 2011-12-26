@@ -1,0 +1,27 @@
+<?page title="Authentication" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Authentication" border="normal" apply="de.atomspace.webapp.component.authentication.AuthenticationComposer" >
+	
+	<div id="loginDiv" align="center" visible="false" >
+		<hbox>
+			<div id="googleDiv" />
+			<div id="yahooDiv" />
+			<groupbox><image id="aolImage" src="/resources/images/openid_aol.png" /></groupbox>
+			<groupbox><image id="myopenidImage" src="/resources/images/openid_myopenid.png" /></groupbox>
+			<groupbox><image id="openidImage" src="/resources/images/openid_openid.png" /></groupbox>
+		</hbox>
+		<vbox>
+			<div id="aolDiv" visible="false" />
+			<div id="myopenidDiv" visible="false" />
+			<div id="openidDiv" visible="false" />
+		</vbox>
+	</div>
+	
+    <div id="detailsDiv" align="center" visible="false">
+    	<label id="webUserUser" value="oID" />
+    	<textbox id="webUserName" value="Nobody" />
+    	<button id="save" label="SAVE" />
+    </div>
+    
+</window>
+</zk>

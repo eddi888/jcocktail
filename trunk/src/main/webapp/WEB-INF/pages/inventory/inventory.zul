@@ -1,0 +1,6 @@
+<?page title="MyBar" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="MyBar" border="normal">
+Inventory
+</window>
+</zk>
