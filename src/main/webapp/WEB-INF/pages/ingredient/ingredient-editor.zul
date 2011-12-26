@@ -1,0 +1,56 @@
+<?page title="Zutat" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Zutat-Editor" border="normal" apply="de.atomspace.webapp.component.ingredient.IngredientEditorComposer">
+
+
+		<grid fixedLayout="true">
+			<columns>
+				<column label="Type" width="150px" />
+				<column label="Content" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Name" width="150px" />
+					<hlayout>
+						<textbox id="nameTxt" width="150px"
+							tabbable="true" />
+					</hlayout>
+				</row>
+				<row>
+					<label value="Title" width="150px" />
+					<hlayout>
+						<textbox id="titleTxt" width="150px"
+							tabbable="true" />
+					</hlayout>
+				</row>
+				<row>
+					<label value="Keywords (META-TAG)" width="150px" />
+					<hlayout>
+						<textbox id="keywordsTxt" width="150px"
+							tabbable="true" />
+					</hlayout>
+				</row>
+				<row>
+					<label value="Description (META-TAG)" width="150px" />
+					<hlayout>
+						<textbox id="descriptionTxt" width="150px"
+							tabbable="true" />
+					</hlayout>
+				</row>
+				<row>
+					<label value="Robots (META-TAG)" width="150px" />
+					<hlayout>
+						<textbox id="robotsTxt" width="150px"
+							tabbable="true" />
+						<button id="robotsBtn1" label="index, follow" />
+						<button id="robotsBtn2" label="nofollow" />
+						<button id="robotsBtn3" label="noindex" />
+					</hlayout>
+				</row>
+			</rows>
+		</grid>
+
+
+
+	</window>
+</zk>

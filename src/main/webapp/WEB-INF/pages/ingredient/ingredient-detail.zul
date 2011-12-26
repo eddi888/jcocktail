@@ -1,0 +1,6 @@
+<?page title="Zutat" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Zutat-Detail" border="normal">
+Zutat-Detail
+</window>
+</zk>
