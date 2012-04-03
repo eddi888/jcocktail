@@ -1,22 +1,3 @@
-/* ******************************************************************************
-*    JCocktail - Webapplication for Cocktail Resource Planing and Management.   *
-*    Copyright (C) 2011  Edgar Wentzlaff                                        *
-*                                                                               *
-*    This program is free software: you can redistribute it and/or modify       *
-*    it under the terms of the GNU Affero General Public License as             *
-*    published by the Free Software Foundation, either version 3 of the         *
-*    License, or (at your option) any later version.                            *
-*                                                                               *
-*    This program is distributed in the hope that it will be useful,            *
-*    but WITHOUT ANY WARRANTY; without even the implied warranty of             *
-*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              *
-*    GNU Affero General Public License for more details.                        *
-*                                                                               *
-*    You should have received a copy of the GNU Affero General Public License   *
-*    along with this program.  If not, see <http://www.gnu.org/licenses/>.      *
-*                                                                               *
-****************************************************************************** */
-
 package de.atomspace.webapp.component.ingredient;
 
 import java.util.List;
@@ -95,19 +76,16 @@ public class IngredientComposer  extends GenericForwardComposer {
 		List<Ingredient> list = service.findAll(id,limit);
 		ListModel model = new SimpleListModel(list);
 		listBox.setModel(model );
-		listBox.setItemRenderer(new ListitemRenderer() {
-			
+		listBox.setItemRenderer(new ListitemRenderer<Ingredient>() {
+
+			//TODO PARAMETER 3
 			@Override
-			public void render(Listitem item, Object object) throws Exception {
-				Ingredient ingredient = (Ingredient) object;
+			public void render(Listitem item, Ingredient ingredient, int x) throws Exception {
+				//Ingredient ingredient = (Ingredient) object;
 				
 				Listcell cellName = new Listcell();
 				new Label(ingredient.getName()).setParent(cellName);
 				cellName.setParent(item);
-				
-				/*Listcell cellDesc = new Listcell();
-				new Label(ingredient.getDescription()).setParent(cellDesc);
-				cellDesc.setParent(item);*/
 				
 				Listcell cellAlcohol = new Listcell();
 				new Label(ingredient.getAlcohol().toPlainString()+"%").setParent(cellAlcohol);
