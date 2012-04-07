@@ -14,10 +14,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import de.atomspace.webapp.component.dimension.Dimension;
-import de.atomspace.webapp.component.dimension.DimensionRepository;
 import de.atomspace.webapp.component.dimension.DimensionRow;
+import de.atomspace.webapp.component.dimension.service.DimensionRepository;
 import de.atomspace.webapp.component.ingredient.Ingredient;
-import de.atomspace.webapp.component.ingredient.IngredientRepository;
+import de.atomspace.webapp.component.ingredient.service.IngredientRepository;
 import de.atomspace.webapp.component.unit.Unit;
 import de.atomspace.webapp.component.unit.service.UnitRepository;
 

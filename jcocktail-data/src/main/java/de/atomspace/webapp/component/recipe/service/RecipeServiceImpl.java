@@ -3,6 +3,8 @@ package de.atomspace.webapp.component.recipe.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface RecipeService {
-	
+@Service
+@Transactional
+public class RecipeServiceImpl implements RecipeService {
+
 }

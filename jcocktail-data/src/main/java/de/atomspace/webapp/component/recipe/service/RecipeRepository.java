@@ -27,4 +27,5 @@ public interface RecipeRepository extends CrudRepository<Recipe, ObjectId>, Quer
 	
 	Page<Recipe> findAll(Pageable pageable);
 	
+	
 }

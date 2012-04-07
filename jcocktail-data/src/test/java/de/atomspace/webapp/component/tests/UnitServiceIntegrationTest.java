@@ -1,8 +1,8 @@
 package de.atomspace.webapp.component.tests;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +10,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -18,18 +17,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import de.atomspace.webapp.component.unit.Unit;
-import de.atomspace.webapp.component.unit.service.UnitRepository;
+import de.atomspace.webapp.component.unit.service.UnitService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:repository-integration-tests-context.xml")
-public class UnitRepositoryIntegrationTest {
+@ContextConfiguration("classpath:service-integration-tests-context.xml")
+public class UnitServiceIntegrationTest {
 	
 	@Autowired
 	MongoOperations operations;
 
 	@Autowired
-	UnitRepository repository;
+	UnitService service;
 
 	@Before
 	public void setUp() {
@@ -49,27 +48,21 @@ public class UnitRepositoryIntegrationTest {
 		entity.setDetached(false);
 		entity.setPublished(true);
 		assertNull(entity.getId());
-		entity = repository.save(entity);
+		entity = service.save(entity);
 		assertNotNull(entity.getId());
 		
 		Unit entity2 = new Unit();
 		entity2.setName("cm");
-		entity2.setDetached(true);
+		entity2.setDetached(false);
 		assertNull(entity2.getId());
-		entity2 = repository.save(entity2);
+		entity2 = service.save(entity2);
 		assertNotNull(entity2.getId());
 		
-		List<Unit> listUnit;
-		listUnit = repository.findByDetached(false);
-		assertEquals(1,listUnit.size());
-		
-		Page<Unit> pageUnit = repository.findByDetached(new PageRequest(0, 5),false);
-		assertEquals(1,pageUnit.getContent().size());
+		Page<Unit> pageUnit;
+		pageUnit = service.findAll(new PageRequest(0, 5));
+		assertEquals(2,pageUnit.getContent().size());
 		
 		
-		repository.delete(entity.getId());
-		entity = repository.findOne(entity.getId());
-		assertNull(entity);
 		
 	}
 
