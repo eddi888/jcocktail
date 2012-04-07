@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
         <modelVersion>4.0.0</modelVersion>
         
 		<groupId>de.jcocktail</groupId>
@@ -23,11 +23,11 @@
 				<spring.data.version>1.0.2.RELEASE</spring.data.version>
 				<spring.data.mongo.version>1.0.1.RELEASE</spring.data.mongo.version>
 				<!--<spring.data.mongo.version>1.1.0.BUILD-SNAPSHOT</spring.data.mongo.version>-->
-		
+				<querydsl.version>2.3.3</querydsl.version>
 				<junit.version>4.9</junit.version>
+				<testng.version>5.14.9</testng.version>
 				<mockito.version>1.9.0</mockito.version>
-				<easymock.version>2.0</easymock.version>
-				
+				<easymock.version>3.0</easymock.version>
 				<slf4j.version>1.6.1</slf4j.version>
         </properties>
 		
@@ -75,6 +75,12 @@
 				<version>${junit.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<!--<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${testng.version}</version>
+				<scope>test</scope>
+			</dependency>-->
 			<dependency>
 				 <groupId>org.mockito</groupId>
 				  <artifactId>mockito-all</artifactId>
@@ -82,7 +88,7 @@
 				  <scope>test</scope>
 			</dependency>
 			<dependency>
-				<groupId>easymock</groupId>
+				<groupId>org.easymock</groupId>
 				<artifactId>easymock</artifactId>
 				<version>${easymock.version}</version>
 				<scope>test</scope>
@@ -118,6 +124,7 @@
 		<modules>
 		        <module>jcocktail-data</module>		
 				<module>jcocktail-web</module>
-		</modules>
+    <module>jcocktail-tapestry</module>
+  </modules>
 		
 </project>
