@@ -1,27 +1,14 @@
 package de.atomspace.webapp.component.unit;
 
-import java.math.BigDecimal;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Persistent;
-import org.springframework.data.annotation.Reference;
-
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
-
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/*
-import com.google.code.morphia.annotations.Id;
-import com.google.code.morphia.annotations.Indexed;
-import com.google.code.morphia.annotations.Property;
-import com.google.code.morphia.annotations.Reference;
-import com.google.code.morphia.annotations.Transient;
-import com.google.code.morphia.annotations.Version;
-import com.google.code.morphia.utils.IndexDirection;
-*/
+
 
 @Document
 public class Unit {
@@ -36,7 +23,6 @@ Temperatur (Kelvin)
 Lichtstärke (Candela)
 Stoffmenge (Mol)
 Stromstärke (Ampere)
-
 	 */
 	
 	@Transient public final static int DIMENSION_MENGE=1;
@@ -50,21 +36,24 @@ Stromstärke (Ampere)
 	@Transient public final static int DIMENSION_STOFFMENGE=2;
 	@Transient public final static int DIMENSION_STROMSTAERKE=2;
 	
-
 	@Id	private ObjectId id;
-	@Persistent private boolean published;
-	@Persistent private boolean detached;
+	private boolean published;
+	
+	@Indexed
+	private boolean detached;
+	
+	private long createDate;
+	
+	private long updateDate;
+	
+	@DBRef
+	private String webUser;
+	
 	
 	@Indexed(direction = IndexDirection.ASCENDING, name = "name", unique = true, dropDups=true)
 	private String name;
 	
-	@Persistent private String description;
-	//@Persistent private int dimension;
-	
-	//@DBRef private Unit basisUnit;
-	
-	//@Persistent private Double basisFactor;
-	//@Transient private BigDecimal basisFactorTransistent;
+	private String description;
 	
 	public ObjectId getId() {
 		return id;

@@ -22,7 +22,6 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<querydsl.version>2.3.3</querydsl.version>
 	</properties>
 
 	<repositories>
@@ -87,7 +86,7 @@
 			<groupId>com.mysema.querydsl</groupId>
 			<artifactId>querydsl-mongodb</artifactId>
 			<version>${querydsl.version}</version>
-			<optional>true</optional>
+			<!-- <optional>true</optional> -->
 			<exclusions>
 				<exclusion>
 					<groupId>com.google.code.morphia</groupId>
@@ -100,7 +99,7 @@
 			<groupId>com.mysema.querydsl</groupId>
 			<artifactId>querydsl-apt</artifactId>
 			<version>${querydsl.version}</version>
-			<scope>provided</scope>
+			<!-- <scope>provided</scope>-->
 		</dependency>
 		
 		<!-- Test dependencies -->
@@ -117,6 +116,37 @@
 			</exclusions>
 		</dependency>
 		
+		
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- 
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-ldap</artifactId>
+			<version>${spring.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-openid</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		--> 
 	</dependencies>
 
 	<build>

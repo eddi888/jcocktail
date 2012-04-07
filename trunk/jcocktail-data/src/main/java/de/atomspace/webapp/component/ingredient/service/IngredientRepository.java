@@ -1,7 +1,9 @@
-package de.atomspace.webapp.component.ingredient;
+package de.atomspace.webapp.component.ingredient.service;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.repository.CrudRepository;
+
+import de.atomspace.webapp.component.ingredient.Ingredient;
 
 public interface IngredientRepository extends CrudRepository<Ingredient, ObjectId> {
 	

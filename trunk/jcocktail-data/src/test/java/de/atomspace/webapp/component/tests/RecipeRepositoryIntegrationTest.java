@@ -24,12 +24,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import de.atomspace.webapp.component.action.Action;
-import de.atomspace.webapp.component.action.ActionRepository;
+import de.atomspace.webapp.component.action.service.ActionRepository;
 import de.atomspace.webapp.component.dimension.Dimension;
-import de.atomspace.webapp.component.dimension.DimensionRepository;
 import de.atomspace.webapp.component.dimension.DimensionRow;
+import de.atomspace.webapp.component.dimension.service.DimensionRepository;
 import de.atomspace.webapp.component.ingredient.Ingredient;
-import de.atomspace.webapp.component.ingredient.IngredientRepository;
+import de.atomspace.webapp.component.ingredient.service.IngredientRepository;
 import de.atomspace.webapp.component.recipe.Recipe;
 import de.atomspace.webapp.component.recipe.RecipeRow;
 import de.atomspace.webapp.component.recipe.RecipeRowType;
@@ -157,8 +157,6 @@ public class RecipeRepositoryIntegrationTest {
 		feel = actionRepository.save(feel);
 	}
 
-
-	@Ignore
 	@Test
 	public void createAndFindRecipe() throws Exception {
 		Recipe recipe1 = new Recipe();
@@ -238,6 +236,7 @@ public class RecipeRepositoryIntegrationTest {
 		
 	}
 
+	@Ignore
 	@Test
 	public void listRecipes() throws Exception {
 		ArrayList<Recipe> dummys = new ArrayList<Recipe>(); 
