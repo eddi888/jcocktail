@@ -107,7 +107,7 @@ public class AuthenticationComposer extends GenericForwardComposer {
 		String inputType="hidden";
 		if(inputRequired) inputType="text";
 		String content ="";
-		content+="<form action=\"/jcocktail/j_spring_openid_security_check\" method=\"post\" name=\"openid_"+provider+"_form\">"; 
+		content+="<form action=\"/jcocktail-zk/j_spring_openid_security_check\" method=\"post\" name=\"openid_"+provider+"_form\">"; 
 		content+="<input type=\"hidden\" name=\"action\" value=\"verify\" /> ";
 		content+="<input id=\"openid_"+provider+"_identifier\" name=\"openid_identifier\" type=\"hidden\" value=\""+url+"\" />";
 		//content+=label;
