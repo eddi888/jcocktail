@@ -1,0 +1,32 @@
+<html t:type="layout" title="Recipes"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    
+	<table>
+		<tbody>
+			<tr hidden="true" >
+				<td>Id:</td><td>${recipe.id}</td>
+			</tr><tr>
+				<td>Name:</td><td>${recipe.name}</td>
+			</tr><tr>
+				<td>Description:</td><td>${recipe.description}</td>
+			</tr><tr>
+				<td>Instruction:</td><td>${displayInstruction}</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Ingredients:</p>
+	<table>
+		<tbody>
+			<t:loop  source="ingredients" value="row">
+				<tr>
+					<td><t:output value="row.displayAmount" format="decimalFormat" /></td>
+					<td>${row.unit.name}</td>
+					<td>${row.ingredient.name}</td>
+				</tr>
+			</t:loop>
+		</tbody>
+	</table>
+	<t:pagelink page="RecipeList" context="recipeListNumber" >BACK</t:pagelink>
+	<t:pagelink page="RecipeEdit" context="recipe.name" >EDIT</t:pagelink>
+</html>

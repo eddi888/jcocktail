@@ -1,0 +1,254 @@
+<html t:type="layout" title="Authentication"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+      
+    <p>
+    	Eine Registrierung ist <b>nicht</b> notwendig. Einfach mit einer gültigen <a href="http://de.wikipedia.org/wiki/OpenID"  target="_blank">OpenID</a> anmelden und deine persönlichen Bareinstellungen vornehmen.
+    </p>
+    <form t:type="form">
+		<table>
+			<tbody>
+				<tr hidden="true" >
+					<td>Id:</td>
+				</tr><tr>
+					<td>Name: ${friendlyName}</td>
+				</tr>
+				<tr>
+					<td>UserName: ${userName}</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	
+	<table width="100%" align="center" >
+		<tbody>
+			<tr>
+				<td colspan="5"  align="center" >
+					<form action="/jcocktail-tapestry/j_spring_openid_security_check" method="post" name="openid_openid_form">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<img src="layout/images/openid_openid.png" width="90" height="30" />
+									</td>
+									<td>
+										<input type="hidden" name="action" value="verify" /> 
+									</td>
+									<td>
+										<input id="openid_openid_identifier" type="hidden" name="openid_identifier" />
+									</td>
+									<td>
+										Enter your <a href="http://openid.net/" target="_blank" >OpenID</a>:<br/>
+										<input id="openid_openid_name"  size="30" value="" onchange='openid_openid_identifier.value="http://{username}".replace("{username}",this.value);' />
+									</td>
+									<td>
+										<br/>
+										<input type="submit" value="Sign-In" />
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5"  align="center" >
+					&bull;
+				</td>
+			</tr>
+			<tr>
+				<td  align="center">
+					<form action="j_spring_openid_security_check" method="post" name="openid_google_form">
+						<input type="hidden" name="action" value="verify" /> 
+						<input id="openid_google_identifier" name="openid_identifier" type="hidden" value="https://www.google.com/accounts/o8/id" />
+						<input id="openid_name" type="hidden" value="https://www.google.com/accounts/o8/id" />
+						<img src="layout/images/openid_google.png" onclick="openid_google_form.submit();" />
+					</form>
+				</td>
+				<td  align="center">
+					&bull;
+				</td>
+				<td  align="center">
+					<form action="j_spring_openid_security_check" method="post" name="openid_yahoo_form">
+						<input type="hidden" name="action" value="verify" /> 
+						<input id="openid_yahoo_identifier" name="openid_identifier" type="hidden" value="http://me.yahoo.com/" />
+						<input id="openid_name" type="hidden" value="http://me.yahoo.com/" />
+						<img src="layout/images/openid_yahoo.png" onclick="openid_yahoo_form.submit();" />
+					</form>
+				</td>
+				<td  align="center">
+					&bull;
+				</td>
+				<td  align="center">
+					<form action="j_spring_openid_security_check" method="post" name="openid_aol_form">
+						<input type="hidden" name="action" value="verify" /> 
+						<input id="openid_aol_identifier" name="openid_identifier" type="hidden" value="http://openid.aol.com/" />
+						<input id="openid_name" type="hidden" value="http://openid.aol.com/" />
+						<img src="layout/images/openid_aol.png" onclick="openid_aol_form.submit();" />
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5"  align="center" >
+					&bull;
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5"  align="center" >
+					<form action="j_spring_openid_security_check" method="post" name="openid_wordpress_form">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<img src="layout/images/openid_wordpress.png" width="90" height="30"  />
+									</td>
+									<td>
+										<br />
+										<input type="hidden" name="action" value="verify" /> 
+									</td>
+									<td>
+										
+										<input id="openid_wordpress_identifier" type="hidden" name="openid_identifier" />
+									</td>
+									<td>
+										Enter your <a href="http://de.wordpress.com/" target="_blank">wordpress</a> username:<br />
+										<input id="openid_wordpress_name"  size="30" value="" onchange='openid_wordpress_identifier.value="http://{username}.wordpress.com/".replace("{username}",this.value);' />
+									</td>
+									<td>
+										<br />
+										<input type="submit" value="Sign-In" />
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</form>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="5"  align="center" >
+					&bull;
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5"  align="center" >
+					<form action="j_spring_openid_security_check" method="post" name="openid_myopenid_form">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<img src="layout/images/openid_myopenid.png" width="90" height="30"   />
+									</td>
+									<td>
+										<br />
+										<input type="hidden" name="action" value="verify" /> 
+									</td>
+									<td>
+										
+										<input id="openid_myopenid_identifier" type="hidden" name="openid_identifier" />
+									</td>
+									<td>
+										Enter your <a href="https://www.myopenid.com/" target="_blank">MyOpenID</a> username:<br />
+										<input id="openid_myopenid_name"  size="30" value="" onchange='openid_myopenid_identifier.value="http://{username}.myopenid.com/".replace("{username}",this.value);' />
+									</td>
+									<td>
+										<br />
+										<input type="submit" value="Sign-In" />
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5"  align="center" >
+					&bull;
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5"  align="center" >
+					<form action="j_spring_openid_security_check" method="post" name="openid_verisign_form">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<img src="layout/images/openid_verisign.png" width="90" height="30"  />
+									</td>
+									<td>
+										<br />
+										<input type="hidden" name="action" value="verify" /> 
+									</td>
+									<td>
+										
+										<input id="openid_verisign_identifier" type="hidden" name="openid_identifier" />
+									</td>
+									<td>
+										Enter your <a href="https://pip.verisignlabs.com/" target="_blank">Verisign</a> username:<br />
+										<input id="openid_verisign_name"  size="30" value="" onchange='openid_verisign_identifier.value="http://{username}.pip.verisignlabs.com/".replace("{username}",this.value);' />
+									</td>
+									<td>
+										<br />
+										<input type="submit" value="Sign-In" />
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5"  align="center" >
+					&bull;
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5"  align="center" >
+					<form action="j_spring_openid_security_check" method="post" name="openid_myidnet_form">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<img src="layout/images/openid_myidnet.png" width="90" height="30"  />
+									</td>
+									<td>
+										<br />
+										<input type="hidden" name="action" value="verify" /> 
+									</td>
+									<td>
+										
+										<input id="openid_myidnet_identifier" type="hidden" name="openid_identifier" />
+									</td>
+									<td>
+										Enter your  <a href="https://www.myid.net/" target="_blank">myIDnet</a> username:<br />
+										<input id="openid_myidnet_name"  size="30" value="" onchange='openid_myidnet_identifier.value="http://{username}.myid.net/".replace("{username}",this.value);' />
+									</td>
+									<td>
+										<br />
+										<input type="submit" value="Sign-In" />
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5"  align="center" >
+					&bull;
+				</td>
+			</tr>
+			
+		</tbody>
+	</table>
+	<p>
+		Du hast noch keine <a href="http://de.wikipedia.org/wiki/OpenID" target="_blank" >OpenID</a> oder weist vielleicht noch nicht das du schon eine OpeID hast? Dann melde ich auf einer den unden genanten Seiten an, diese bieten kostenlos ein OpenID.
+	</p>
+
+
+</html>
