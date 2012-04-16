@@ -1,18 +1,23 @@
 package de.atomspace.webapp.pages;
 
-import java.math.RoundingMode;
+import java.io.File;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.upload.services.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import de.atomspace.webapp.component.recipe.Recipe;
 import de.atomspace.webapp.component.recipe.RecipeRow;
@@ -22,15 +27,13 @@ import de.atomspace.webapp.component.recipe.service.RecipeService;
 
 public class RecipeEdit {
 	
-
-	
 	@Autowired
 	@Inject
 	private RecipeService recipeService;
 	
-	@Autowired
-	@Inject
-	private RecipeRepository recipeRepository;
+	//@Autowired
+	//@Inject
+	//private RecipeRepository recipeRepository;
 	
 	private Recipe recipe;
 	
@@ -78,11 +81,11 @@ public class RecipeEdit {
 	}
 	
 	void onActivate(String recipeName){
-		
+		SecurityContextHolder.getContext().getAuthentication().getName();
 		
 		this.recipeName = recipeName;
 		
-		recipe=recipeRepository.findOneByName(recipeName);
+		recipe=recipeService.findOneByName(recipeName);
 		if(recipe==null){
 			recipe = new Recipe();
 			
@@ -146,4 +149,33 @@ public class RecipeEdit {
 		}
 		return list;
 	}
+	
+	@Property
+    private UploadedFile file;
+
+    public void onSuccess()
+    {
+        //File copied = new File("/my/file/location/" + file.getFileName());
+    	System.out.println(file.getFilePath());
+    	System.out.println(file.getSize());
+    	System.out.println(file.getContentType());
+    	System.out.println(file.getFileName());
+    	InputStream x = file.getStream();
+    	
+    	
+    	
+        //file.write(copied);
+    }
+    
+    @Persist(PersistenceConstants.FLASH)
+    @Property
+    private String message;
+    Object onUploadException(FileUploadException ex)
+    {
+        message = "Upload exception: " + ex.getMessage();
+
+        return this;
+    }
+	
+	
 }

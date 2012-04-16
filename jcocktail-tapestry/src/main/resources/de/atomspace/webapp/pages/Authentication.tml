@@ -10,9 +10,8 @@
 			<tbody>
 				<tr hidden="true" >
 					<td>Id:</td>
-				</tr><tr>
-					<td>Name: ${friendlyName}</td>
 				</tr>
+
 				<tr>
 					<td>UserName: ${userName}</td>
 				</tr>

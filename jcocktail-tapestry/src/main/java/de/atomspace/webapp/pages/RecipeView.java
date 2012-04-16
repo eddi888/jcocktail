@@ -38,9 +38,9 @@ public class RecipeView {
 	@Inject
 	private RecipeService recipeService;
 	
-	@Autowired
-	@Inject
-	private RecipeRepository recipeRepository;
+	//@Autowired
+	//@Inject
+	//private RecipeRepository recipeRepository;
 	
 	private Recipe recipe;
 	
@@ -90,7 +90,7 @@ public class RecipeView {
 		
 		this.recipeName = recipeName;
 		
-		recipe=recipeRepository.findOneByName(recipeName);
+		recipe=recipeService.findOneByName(recipeName);
 		if(recipe==null){
 			//TODO FORWARD
 			

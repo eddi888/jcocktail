@@ -8,15 +8,23 @@ import org.apache.tapestry5.ioc.annotations.*;
 import org.apache.tapestry5.corelib.components.*;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.alerts.AlertManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.openid.OpenIDAttribute;
 import org.springframework.security.openid.OpenIDAuthenticationToken;
+
+import de.atomspace.webapp.component.webuser.Webuser;
+import de.atomspace.webapp.component.webuser.service.WebuserService;
 
 /**
  * Start page of application jcocktail-tapestry.
  */
 public class Index
 {
+
+	@SessionState
+	private Webuser currentWebuser;
+	
     @Property
     @Inject
     @Symbol(SymbolConstants.TAPESTRY_VERSION)
@@ -32,6 +40,19 @@ public class Index
     @Inject
     private AlertManager alertManager;
 
+    @Inject
+	@Autowired
+	WebuserService webuserService;
+	
+	void onActivate(){
+		String user = SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		System.out.println("Index-user-:"+user);
+		Webuser wu = webuserService.findOneByUser(user);
+		System.out.println("wu"+wu);
+		currentWebuser=null;
+	}
+	
     public Date getCurrentTime()
     {
         return new Date();
@@ -54,7 +75,7 @@ public class Index
     }
     
     public String getFriendlyName(){
-		String friendlyName="Barkeeper";
+		/*String friendlyName="Barkeeper";
 		String user = SecurityContextHolder.getContext().getAuthentication().getName();
 		
 		if(!user.startsWith("anonymous")){
@@ -80,6 +101,12 @@ public class Index
 		}else{
 			friendlyName="Cocktail-Freund";
 		}
-		return friendlyName;
+		return friendlyName;*/
+    	if(currentWebuser!=null){
+    		return currentWebuser.getName();
+    	}else{
+    		return "Barkeeper";
+    	}
+    	
 	}
 }
