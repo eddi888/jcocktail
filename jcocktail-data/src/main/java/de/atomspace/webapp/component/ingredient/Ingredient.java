@@ -1,6 +1,7 @@
 package de.atomspace.webapp.component.ingredient;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -15,6 +16,10 @@ public class Ingredient {
 	@Id	private ObjectId id;
 	private boolean published;
 	private boolean detached;
+	private String createdBy;
+	private String updatedBy;
+	private Date createdDate;
+	private Date updatedDate;
 	
 	@Indexed(direction = IndexDirection.ASCENDING, name = "name", unique = true, dropDups=true)
 	private String name;
@@ -26,6 +31,7 @@ public class Ingredient {
 	private BigDecimal alcohol;
 	
 	private boolean planningFunction;
+	
 	
 	public ObjectId getId() {
 		return id;
@@ -76,7 +82,30 @@ public class Ingredient {
 	public void setDimension(Dimension dimension) {
 		this.dimension = dimension;
 	}
-	
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
 	
 	
 	

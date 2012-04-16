@@ -8,5 +8,7 @@ public interface WebuserService {
 
 	Webuser findOneByUserOrInitOne(String user);
 
+	Webuser findOneByUser(String user);
+
 	
 }

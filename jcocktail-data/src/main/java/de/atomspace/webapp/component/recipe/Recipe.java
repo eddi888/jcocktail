@@ -1,6 +1,7 @@
 package de.atomspace.webapp.component.recipe;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -12,18 +13,22 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Recipe {
 	@Id	private ObjectId id;
-	@Persistent private boolean published;
-	@Persistent private boolean detached;
+	private boolean published;
+	private boolean detached;
+	private String createdBy;
+	private String updatedBy;
+	private Date createdDate;
+	private Date updatedDate;
 	
 	@Indexed(direction = IndexDirection.ASCENDING, name = "name", unique = true, dropDups=true)
 	private String name;
 	
-	@Persistent private String description;
+	private String description;
 	
-	@Persistent private String instruction;
+	private String instruction;
 	
-	@Persistent private ArrayList<RecipeRow> rows = new ArrayList<RecipeRow>();
-
+	private ArrayList<RecipeRow> rows = new ArrayList<RecipeRow>();
+	
 	public ObjectId getId() {
 		return id;
 	}
@@ -78,6 +83,38 @@ public class Recipe {
 
 	public void setRows(ArrayList<RecipeRow> rows) {
 		this.rows = rows;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
 	}
 	
 	
