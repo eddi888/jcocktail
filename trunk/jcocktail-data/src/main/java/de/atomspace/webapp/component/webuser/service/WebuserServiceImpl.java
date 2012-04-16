@@ -10,25 +10,7 @@ public class WebuserServiceImpl implements WebuserService {
 	
 	@Autowired
 	WebuserRepository webuserRepository; 
-	
-	/*	
-	public Webuser findOneByUser(String string) {
-		Query<Webuser> query = datastore.createQuery(Webuser.class);
-		query = query.limit(1);
-		query = query.field("detached").equal(false);
-		query = query.field("user").equal(string);
-		List<Webuser> list = dao.find(query).asList();
-		if(list.size()==1){
-			return list.get(0);
-		}else{
-			return null;
-		}
-	}
-	public Key<Webuser> save(Webuser entity){
-		 return dao.save(entity);
-	}
-	*/
-	
+		
 	@Override
 	public Webuser findOneByUserOrInitOne(String user) {
 		Webuser webuser = webuserRepository.findOneByUser(user);
@@ -43,4 +25,11 @@ public class WebuserServiceImpl implements WebuserService {
 		}
 		return webuser;
 	}
+
+	@Override
+	public Webuser findOneByUser(String user) {
+		return webuserRepository.findOneByUser(user);
+
+	}
+	
 }
