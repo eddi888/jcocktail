@@ -21,9 +21,9 @@ public class RecipeList {
 	@Inject
 	private RecipeService recipeService;
 	
-	@Autowired
-	@Inject
-	private RecipeRepository recipeRepository;
+	//@Autowired
+	//@Inject
+	//private RecipeRepository recipeRepository;
 	
 	private PageRequest pageRequest;
 	
@@ -40,7 +40,7 @@ public class RecipeList {
 		System.out.println("recipeListNumber:"+recipeListNumber);
 		
 		pageRequest = new PageRequest(pageNumber,10);
-		setPage(recipeRepository.findAll(pageRequest));
+		setPage(recipeService.findAll(pageRequest));
 	}
 	
 	void onActivate(int id){

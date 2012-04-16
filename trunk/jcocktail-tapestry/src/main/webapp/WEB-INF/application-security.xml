@@ -12,8 +12,8 @@
 	
 		<security:intercept-url pattern="/recipelist/*" access="permitAll"/>
 		<security:intercept-url pattern="/recipeview/*" access="permitAll"/>
-		<security:intercept-url pattern="/recipeedit" access="hasRole('ROLE_USER')"/>
-		<security:intercept-url pattern="/recipeedit/*" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/recipexedit" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/recipexedit/*" access="hasRole('ROLE_USER')"/>
 	
 		<security:intercept-url pattern="/ingredients" access="permitAll"/>
 		<security:intercept-url pattern="/web/" access="permitAll"/>
@@ -25,7 +25,8 @@
 		<!-- Adding the openid-login tag activates Spring Security's support for OpenID  -->
 		<security:openid-login
 				login-page="/authentication" 
-				authentication-failure-url="/authentication?error=true" 
+				authentication-failure-url="/authentication?error=true"
+				always-use-default-target="true" 
 				default-target-url="/">
 			<security:attribute-exchange>
 				<!-- <security:openid-attribute name="email" type="http://axschema.org/contact/email" required="false" /> -->

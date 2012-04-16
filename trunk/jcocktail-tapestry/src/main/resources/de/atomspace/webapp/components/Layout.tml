@@ -35,10 +35,13 @@ Description: A two-column fixed-width template suitable for blogs and small busi
                         <t:pagelink page="RecipeList" context="recipeListNumber" >Recipes</t:pagelink>
                     </li>
                     <li>
-                        <t:pagelink page="Authentication" >Login</t:pagelink>
-                    </li>
-                    <li>
-                    	<a href="logout" >Logout</a>
+                    	<t:if test="anonymousUser" >
+                    		<t:pagelink page="Authentication" >Login</t:pagelink>
+                    		<p:else>
+				                <a href="logout" >Logout</a>
+				            </p:else>
+                    	</t:if>
+                    	
                     </li>
                 </ul>
             </div>
