@@ -24,8 +24,6 @@ public interface RecipeService {
 
 	boolean exists(ObjectId id);
 
-	Iterable<Recipe> findAll();
-
 	long count();
 
 	Recipe delete(Recipe entity);
