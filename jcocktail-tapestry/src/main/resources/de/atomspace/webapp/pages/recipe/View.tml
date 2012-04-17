@@ -20,13 +20,14 @@
 		<tbody>
 			<t:loop  source="ingredients" value="row">
 				<tr>
-					<td><t:output value="row.displayAmount" format="decimalFormat" /></td>
-					<td>${row.unit.name}</td>
+					<!-- <td><t:output value="row.displayAmount" format="decimalFormat" /></td> -->
+					<td><t:output value="row.amount" format="decimalFormat" /></td>
+					<!-- <td>${row.unit.name}</td> -->
 					<td>${row.ingredient.name}</td>
 				</tr>
 			</t:loop>
 		</tbody>
 	</table>
-	<t:pagelink page="RecipeList" context="recipeListNumber" >BACK</t:pagelink>
-	<t:pagelink page="RecipeEdit" context="recipe.name" >EDIT</t:pagelink>
+	<t:pagelink page="recipe/list" context="recipeListNumber" >BACK</t:pagelink>
+	<t:pagelink page="recipe/edit" context="recipe.name" >EDIT</t:pagelink>
 </html>

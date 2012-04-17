@@ -18,6 +18,7 @@ public class Dimension {
 	@Id	private ObjectId id;
 	private boolean published;
 	private boolean detached;
+	private DimensionType type;
 	
 	@Indexed(direction = IndexDirection.ASCENDING, name = "name", unique = true, dropDups=true)
 	private String name;
@@ -83,6 +84,14 @@ public class Dimension {
 
 	public void setDimensionRows(List<DimensionRow> dimensionRows) {
 		this.dimensionRows = dimensionRows;
+	}
+
+	public DimensionType getType() {
+		return type;
+	}
+
+	public void setType(DimensionType type) {
+		this.type = type;
 	}
 
 	

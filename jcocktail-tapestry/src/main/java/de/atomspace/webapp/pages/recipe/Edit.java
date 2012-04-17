@@ -1,18 +1,23 @@
-package de.atomspace.webapp.pages;
+package de.atomspace.webapp.pages.recipe;
 
-import java.math.RoundingMode;
+import java.io.File;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.upload.services.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import de.atomspace.webapp.component.recipe.Recipe;
 import de.atomspace.webapp.component.recipe.RecipeRow;
@@ -20,19 +25,7 @@ import de.atomspace.webapp.component.recipe.RecipeRowType;
 import de.atomspace.webapp.component.recipe.service.RecipeRepository;
 import de.atomspace.webapp.component.recipe.service.RecipeService;
 
-public class RecipeView {
-	
-	//@Inject
-	//@Property
-	//private Locale currentLocale;
-	
-	//@Persist(PersistenceConstants.SESSION)
-	@SessionState(create=false)
-	private Integer recipeListNumber;
-	
-	public Integer getRecipeListNumber() {
-		return recipeListNumber;
-	}
+public class Edit {
 	
 	@Autowired
 	@Inject
@@ -47,6 +40,8 @@ public class RecipeView {
 	private String recipeName;
 	
 	private RecipeRow row;
+	
+	private String category;
 	
 	public List<RecipeRow> getIngredients() {
 		List<RecipeRow> ingredients = new ArrayList<RecipeRow>();
@@ -86,16 +81,20 @@ public class RecipeView {
 	}
 	
 	void onActivate(String recipeName){
-		System.out.println("recipeListNumber:"+recipeListNumber);
+		SecurityContextHolder.getContext().getAuthentication().getName();
 		
 		this.recipeName = recipeName;
 		
 		recipe=recipeService.findOneByName(recipeName);
 		if(recipe==null){
-			//TODO FORWARD
+			recipe = new Recipe();
 			
 		}
 		
+	}
+	
+	void onActivate(){
+		recipe = new Recipe();
 	}
 	
 	public Recipe getRecipe() {
@@ -118,23 +117,65 @@ public class RecipeView {
 		return new DecimalFormat(",##0.00" );
 	}
 
+	public String getCategory() {
+		System.out.println("getCategory: "+category);
+		return category;
+	}
 
-	/*public NumberFormat getNumberFormat() {
-		//numberFormat = NumberFormat.getCurrencyInstance(currentLocale);
-		//numberFormat.setMaximumFractionDigits(2);
-		return numberFormat;
-	}*/
+	public void setCategory(String category) {
+		System.out.println("setCategory: "+category);
+		this.category = category;
+	}
 
-	/*public void setNumberFormat(NumberFormat numberFormat) {
-		this.numberFormat = numberFormat;
-	}*/
+
+	List<String> onProvideCompletionsFromCategory(String partial) {
+		/*List<String> matches = new ArrayList<String>();
+		partial = partial.toUpperCase();
+
+		for (String countryName : countryNames.getSet()) {
+			if (countryName.startsWith(partial)) {
+				matches.add(countryName);
+			}
+		}
+		return matches;*/
+		List<String> list = new ArrayList<String>();
+		
+		if(partial.equals("aaa")){
+			
+		}else{
+			list.add(partial+"1");
+			list.add(partial+"2");
+			list.add(partial+"3");
+		}
+		return list;
+	}
 	
-	/*void setupRender() {
-		numberFormat = NumberFormat.getInstance(currentLocale);
-		numberFormat.setMaximumFractionDigits(2);
-		numberFormat.setMaximumIntegerDigits(2);
-		
-		numberFormat.setRoundingMode(RoundingMode.HALF_UP);
-	}*/
-		
+	@Property
+    private UploadedFile file;
+
+    public void onSuccess()
+    {
+        //File copied = new File("/my/file/location/" + file.getFileName());
+    	System.out.println(file.getFilePath());
+    	System.out.println(file.getSize());
+    	System.out.println(file.getContentType());
+    	System.out.println(file.getFileName());
+    	InputStream x = file.getStream();
+    	
+    	
+    	
+        //file.write(copied);
+    }
+    
+    @Persist(PersistenceConstants.FLASH)
+    @Property
+    private String message;
+    Object onUploadException(FileUploadException ex)
+    {
+        message = "Upload exception: " + ex.getMessage();
+
+        return this;
+    }
+	
+	
 }

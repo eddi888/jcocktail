@@ -7,13 +7,9 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.mysema.query.types.OrderSpecifier;
-import com.mysema.query.types.Predicate;
 
 import de.atomspace.webapp.component.recipe.Recipe;
 
@@ -31,7 +27,7 @@ public class RecipeServiceImpl implements RecipeService {
 	
 	@Override
     public  Page<Recipe> findAll(Pageable pageable){
-    	return recipeRepository.findAll(pageable);
+    	return recipeRepository.findByDetached(pageable, false);
     }
 
 	@Override
@@ -73,10 +69,6 @@ public class RecipeServiceImpl implements RecipeService {
 		return recipeRepository.exists(id);
 	}
 
-	@Override
-	public Iterable<Recipe> findAll() {
-		return recipeRepository.findAll();
-	}
 
 	@Override
 	public long count() {

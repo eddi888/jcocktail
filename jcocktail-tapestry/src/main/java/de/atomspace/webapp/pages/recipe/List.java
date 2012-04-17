@@ -1,4 +1,4 @@
-package de.atomspace.webapp.pages;
+package de.atomspace.webapp.pages.recipe;
 
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -10,7 +10,7 @@ import de.atomspace.webapp.component.recipe.Recipe;
 import de.atomspace.webapp.component.recipe.service.RecipeRepository;
 import de.atomspace.webapp.component.recipe.service.RecipeService;
 
-public class RecipeList {
+public class List {
 
 	//@Persist(PersistenceConstants.SESSION)
 	//@Property

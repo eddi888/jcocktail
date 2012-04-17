@@ -29,7 +29,7 @@
        <property name="name" value="${app.db.name}"/>
    </bean>-->
 	
-	<mongo:db-factory dbname="cocktail-dev"/>
+	<mongo:db-factory dbname="cocktail-test"/>
 	
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg ref="mongoDbFactory" />

@@ -37,6 +37,22 @@
 			<developerConnection>scm:svn:https://jcocktail.googlecode.com/svn/trunk</developerConnection>
         </scm>
 		
+						
+		<distributionManagement>
+			<repository>
+				<id>Releases-repository</id>
+				<name>probier release repository</name>
+				<url>svn:https://jcocktail.googlecode.com/svn/repositories/releases</url>
+				<uniqueVersion>true</uniqueVersion>
+			</repository>
+			<snapshotRepository>
+				<id>Snapshots-repository</id>
+				<name>probier snapshot repository</name>
+				<url>svn:https://jcocktail.googlecode.com/svn/repositories/snapshots</url>
+				<uniqueVersion>false</uniqueVersion>
+			</snapshotRepository>
+		</distributionManagement>
+		
 		<developers>
 				<developer>
                         <id>ewentzlaff</id>
@@ -119,12 +135,23 @@
 					</configuration>
 				</plugin>
 			</plugins>
+			<extensions>
+				<extension>
+					<groupId>org.jvnet.wagon-svn</groupId>
+					<artifactId>wagon-svn</artifactId>
+					<version>1.9</version>
+				</extension>
+				<extension>
+					<groupId>org.apache.maven.wagon</groupId>
+					<artifactId>wagon-ftp</artifactId>
+					<version>1.0-beta-6</version>
+				</extension>
+			</extensions>
 		</build>
 				
 		<modules>
-		        <module>jcocktail-data</module>		
-				<module>jcocktail-web</module>
-    <module>jcocktail-tapestry</module>
-  </modules>
+			<module>jcocktail-data</module>		
+			<module>jcocktail-tapestry</module>
+		</modules>
 		
 </project>

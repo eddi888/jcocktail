@@ -121,7 +121,7 @@ public class RecipeRow {
 			}
 			
 		}
-		return null;
+		return BigDecimal.ONE;
 	}
 	
 }
