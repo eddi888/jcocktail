@@ -19,9 +19,12 @@ import de.atomspace.webapp.component.webuser.service.WebuserService;
 public class Layout
 {
 	
-	@SessionState(create=false)
+	@SessionAttribute
 	private Integer recipeListNumber;
-	
+
+	@SessionAttribute
+	private Integer ingredientListNumber;
+
 	public boolean isAnonymousUser(){
 		String user = SecurityContextHolder.getContext().getAuthentication().getName();
 		return user.equals("anonymousUser");
@@ -73,5 +76,13 @@ public class Layout
 
 	public void setRecipeListNumber(Integer recipeListNumber) {
 		this.recipeListNumber = recipeListNumber;
+	}
+
+	public Integer getIngredientListNumber() {
+		return ingredientListNumber;
+	}
+
+	public void setIngredientListNumber(Integer ingredientListNumber) {
+		this.ingredientListNumber = ingredientListNumber;
 	}
 }

@@ -8,21 +8,21 @@
 				<tr>
 					<td hidden="true" >${recipe.id}</td>
 					<td>${recipe.name}</td>
-					<td><t:pagelink page="recipe/view" context="recipe.name" >[Rezept]</t:pagelink></td>
+					<td><t:pagelink page="recipe/view" context="recipe.name" >[VIEW]</t:pagelink></td>
 				</tr>
 			</t:loop>
 		</tbody>
 	</table>
 
-	<t:pagelink page="recipe/list" disabled="page.firstPage" context="0" >FIRST</t:pagelink>
-	|
-	<t:pagelink page="recipe/list" disabled="page.firstPage" context="previousPageNr" >BACK</t:pagelink>
-	---
+	<t:pagelink page="recipe/list" disabled="page.firstPage" context="0">[FIRST]</t:pagelink>
+	&nbsp;
+	<t:pagelink page="recipe/list" disabled="page.firstPage" context="previousPageNr">[BACK]</t:pagelink>
+	&ensp;
 	${page.number}/${lastPageNr}
-	---
-	<t:pagelink page="recipe/list" disabled="page.LastPage" context="nextPageNr" >NEXT</t:pagelink>
-	|
-	<t:pagelink page="recipe/list" disabled="page.LastPage" context="lastPageNr" >LAST</t:pagelink>
+	&ensp;
+	<t:pagelink page="recipe/list" disabled="page.LastPage" context="nextPageNr">[NEXT]</t:pagelink>
+	&nbsp;
+	<t:pagelink page="recipe/list" disabled="page.LastPage" context="lastPageNr">[LAST]</t:pagelink>
 	
 	
 </html>

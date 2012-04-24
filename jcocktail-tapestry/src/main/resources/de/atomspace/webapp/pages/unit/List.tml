@@ -1,0 +1,28 @@
+<html t:type="layout" title="Units"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    
+	<table>
+		<tbody>
+			<t:loop  source="page.content" value="unit">
+				<tr>
+					<td hidden="true" >${unit.id}</td>
+					<td>${unit.name}</td>
+					<td><t:pagelink page="unit/view" context="unit.name" >[VIEW]</t:pagelink></td>
+				</tr>
+			</t:loop>
+		</tbody>
+	</table>
+
+	<t:pagelink page="unit/list" disabled="page.firstPage" context="0">[FIRST]</t:pagelink>
+	&nbsp;
+	<t:pagelink page="unit/list" disabled="page.firstPage" context="previousPageNr">[BACK]</t:pagelink>
+	&ensp;
+	${page.number}/${lastPageNr}
+	&ensp;
+	<t:pagelink page="unit/list" disabled="page.LastPage" context="nextPageNr">[NEXT]</t:pagelink>
+	&nbsp;
+	<t:pagelink page="unit/list" disabled="page.LastPage" context="lastPageNr">[LAST]</t:pagelink>
+	
+	
+</html>

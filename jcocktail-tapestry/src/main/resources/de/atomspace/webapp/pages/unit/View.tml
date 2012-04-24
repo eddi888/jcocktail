@@ -1,0 +1,18 @@
+<html t:type="layout" title="Recipes"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+	<table>
+		<tbody>
+			<tr hidden="true" >
+				<td>Id:</td><td>${unit.id}</td>
+			</tr><tr>
+				<td>Name:</td><td>${unit.name}</td>
+			</tr><tr>
+				<td>Description:</td><td>${unit.description}</td>
+			</tr>
+		</tbody>
+	</table>
+	<t:pagelink page="unit/list" context="unitListNumber">[BACK]</t:pagelink>
+	&ensp;
+	<t:pagelink page="unit/edit" context="unit.name">[EDIT]</t:pagelink>
+</html>

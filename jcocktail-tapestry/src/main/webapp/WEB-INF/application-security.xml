@@ -27,7 +27,7 @@
 				login-page="/authentication" 
 				authentication-failure-url="/authentication?error=true"
 				always-use-default-target="true" 
-				default-target-url="/">
+				>
 			<security:attribute-exchange>
 				<!-- <security:openid-attribute name="email" type="http://axschema.org/contact/email" required="false" /> -->
 				<!-- <security:openid-attribute name="name" type="http://axschema.org/namePerson" required="false" /> -->

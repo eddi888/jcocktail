@@ -1,7 +1,6 @@
 <html t:type="layout" title="Recipes"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
-    
 	<table>
 		<tbody>
 			<tr hidden="true" >
@@ -28,6 +27,7 @@
 			</t:loop>
 		</tbody>
 	</table>
-	<t:pagelink page="recipe/list" context="recipeListNumber" >BACK</t:pagelink>
-	<t:pagelink page="recipe/edit" context="recipe.name" >EDIT</t:pagelink>
+	<t:pagelink page="recipe/list" context="recipeListNumber">[BACK]</t:pagelink>
+	&ensp;
+	<t:pagelink page="recipe/edit" context="recipe.name">[EDIT]</t:pagelink>
 </html>

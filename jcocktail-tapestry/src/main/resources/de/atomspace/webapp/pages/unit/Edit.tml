@@ -1,0 +1,27 @@
+<html t:type="layout" title="Recipes"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    <t:form id="from" >
+    	<t:errors/>
+		<table>
+			<tbody>
+				<tr >
+					<td>Id:</td><td>${unit.id}</td>
+				</tr>
+				<tr>
+					<td>Name:</td><td>
+						<input t:type="TextField" id="unitName" value="unit.name" size="30" />&nbsp;&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td>Description:</td><td>
+						<input t:type="TextField" id="unitDescription" value="unit.description" size="30" />&nbsp;&nbsp;
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<t:pageLink page="unit/list" >Cancel </t:pageLink>&nbsp;
+   		<input t:type="submit" value="Save" t:id="update" />
+				
+	</t:form>
+</html>

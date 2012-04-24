@@ -1,0 +1,26 @@
+<html t:type="layout" title="Ingredients"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    
+	<table>
+		<tbody>
+			<t:loop  source="page.content" value="ingredient">
+				<tr>
+					<td hidden="true" >${ingredient.id}</td>
+					<td>${ingredient.name}</td>
+					<td><t:pagelink page="ingredient/view" context="ingredient.name" >[VIEW]</t:pagelink></td>
+				</tr>
+			</t:loop>
+		</tbody>
+	</table>
+
+	<t:pagelink page="ingredient/list" disabled="page.firstPage" context="0">[FIRST]</t:pagelink>
+	&nbsp;
+	<t:pagelink page="ingredient/list" disabled="page.firstPage" context="previousPageNr">[BACK]</t:pagelink>
+	&ensp;
+	${page.number}/${lastPageNr}
+	&ensp;
+	<t:pagelink page="ingredient/list" disabled="page.LastPage" context="nextPageNr">[NEXT]</t:pagelink>
+	&nbsp;
+	<t:pagelink page="ingredient/list" disabled="page.LastPage" context="lastPageNr">[LAST]</t:pagelink>
+</html>
