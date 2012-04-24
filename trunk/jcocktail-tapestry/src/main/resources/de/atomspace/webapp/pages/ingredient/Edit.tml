@@ -1,0 +1,43 @@
+<html t:type="layout" title="Recipes"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+    <form t:type="form">
+		<table>
+			<tbody>
+				<tr hidden="true" >
+					<td>Id:</td><td>${recipe.id}</td>
+				</tr><tr>
+					<td>Name:</td><td>${recipe.name}</td>
+				</tr><tr>
+					<td>Description:</td><td>${recipe.description}</td>
+				</tr><tr>
+					<td>Instruction:</td><td>${displayInstruction}</td>
+				</tr>
+				<tr>
+					<td>Category:</td>
+					<td><input t:id="category" t:type="TextField"  t:mixins="autocomplete" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	<p>ROWs:</p>
+	<table>
+		<tbody>
+			<t:loop  source="recipe.rows" value="row">
+				<tr>
+					<td>${row.type}</td>
+					<td>${row.ingredient}</td>
+					<td>${row.unit}</td>
+					<td><t:output value="row.amount" format="decimalFormat" /></td>
+				</tr>
+			</t:loop>
+		</tbody>
+	</table>
+	
+	<t:form>
+		<t:errors/>
+		<input t:type="upload" t:id="file" t:value="file" validate="required"/>
+		<br/>
+		<input type="submit" value="Upload"/>
+	</t:form>
+</html>

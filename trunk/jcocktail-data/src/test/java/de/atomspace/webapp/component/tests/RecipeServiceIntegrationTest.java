@@ -195,7 +195,7 @@ public class RecipeServiceIntegrationTest {
 		
 	}
 
-	//@Ignore
+	@Ignore
 	@Test
 	public void listRecipes() throws Exception {
 		ArrayList<Recipe> dummys = new ArrayList<Recipe>(); 

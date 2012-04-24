@@ -1,0 +1,35 @@
+<html t:type="layout" title="Recipes"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+	<table>
+		<tbody>
+			<tr hidden="true" >
+			</tr><tr>
+				<td>Name:</td><td>${ingredient.name}</td>
+			</tr><tr>
+				<td>Description:</td><td>${ingredient.description}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div hidden="true" >
+		Dimension:<br />
+		Type: ${ingredient.dimension.type}<br/>
+		Main Unit: ${ingredient.dimension.unit.name}
+		<table>
+			<thead>
+				<tr><th>Unit</th><th>Factor</th></tr>
+			</thead>
+			<tbody>
+				<t:loop  source="dimensionRows" value="row">
+					<tr>
+						<td>${row.unit.name}</td>
+						<td>${row.factor}</td>
+					</tr>
+				</t:loop>
+			</tbody>
+		</table>
+	</div>
+	<t:pagelink page="ingredient/list" context="ingredientListNumber" >[BACK]</t:pagelink>
+	&ensp;
+	<t:pagelink page="ingredient/edit" context="ingredient.name">[EDIT]</t:pagelink>
+</html>

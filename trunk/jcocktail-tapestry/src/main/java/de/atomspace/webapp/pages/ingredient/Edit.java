@@ -1,5 +1,6 @@
-package de.atomspace.webapp.pages.recipe;
+package de.atomspace.webapp.pages.ingredient;
 
+import java.io.File;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -10,14 +11,18 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.upload.services.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import de.atomspace.webapp.component.recipe.Recipe;
 import de.atomspace.webapp.component.recipe.RecipeRow;
 import de.atomspace.webapp.component.recipe.RecipeRowType;
+import de.atomspace.webapp.component.recipe.service.RecipeRepository;
 import de.atomspace.webapp.component.recipe.service.RecipeService;
 
 public class Edit {
@@ -75,6 +80,8 @@ public class Edit {
 	
 	void onActivate(String recipeName){
 		SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		
 		recipe=recipeService.findOneByName(recipeName);
 		if(recipe==null){
 			recipe = new Recipe();

@@ -1,4 +1,4 @@
-package de.atomspace.webapp.pages.recipe;
+package de.atomspace.webapp.pages.unit;
 
 import org.apache.tapestry5.annotations.SessionAttribute;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -6,53 +6,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import de.atomspace.webapp.component.recipe.Recipe;
-import de.atomspace.webapp.component.recipe.service.RecipeService;
+import de.atomspace.webapp.component.unit.Unit;
+import de.atomspace.webapp.component.unit.service.UnitService;
 
 public class List {
 
 	@SessionAttribute
-	private Integer recipeListNumber;
+	private Integer unitListNumber;
 	
 	@Autowired
 	@Inject
-	private RecipeService recipeService;
+	private UnitService unitService;
 	
 	private PageRequest pageRequest;
 	
-	private Page<Recipe> page;
+	private Page<Unit> page;
 	
 	private int pageNumber;
 	
-	private Recipe recipe;
+	private Unit unit;
 	
 	void onActivate(){
-		//System.out.println(recipeListNumber);
-		//System.out.println("recipeListNumber:"+recipeListNumber);
-		recipeListNumber=pageNumber;
-		System.out.println("recipeListNumber:"+recipeListNumber);
-		
+		setUnitListNumber(pageNumber);
 		pageRequest = new PageRequest(pageNumber,10);
-		setPage(recipeService.findAll(pageRequest));
+		setPage(unitService.findAll(pageRequest));
 	}
 	
 	void onActivate(int id){
 		pageNumber = id;
 	}
 	
-	public Recipe getRecipe() {
-		return recipe;
-	}
-	
-	public void setRecipe(Recipe recipe) {
-		this.recipe = recipe;
-	}
-	
-	public Page<Recipe> getPage() {
+	public Page<Unit> getPage() {
 		return page;
 	}
 	
-	public void setPage(Page<Recipe> page) {
+	public void setPage(Page<Unit> page) {
 		this.page = page;
 	}
 	
@@ -70,6 +58,22 @@ public class List {
 	
 	public int getLastPageNr(){
 		return page.getTotalPages()-1;
+	}
+
+	public Unit getUnit() {
+		return unit;
+	}
+
+	public void setUnit(Unit unit) {
+		this.unit = unit;
+	}
+
+	public Integer getUnitListNumber() {
+		return unitListNumber;
+	}
+
+	public void setUnitListNumber(Integer unitListNumber) {
+		this.unitListNumber = unitListNumber;
 	}
 	
 	

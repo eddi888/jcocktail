@@ -1,23 +1,17 @@
 package de.atomspace.webapp.pages.recipe;
 
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-import org.apache.tapestry5.PersistenceConstants;
-import org.apache.tapestry5.annotations.Persist;
-import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.SessionState;
+import org.apache.tapestry5.annotations.SessionAttribute;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import de.atomspace.webapp.component.recipe.Recipe;
 import de.atomspace.webapp.component.recipe.RecipeRow;
 import de.atomspace.webapp.component.recipe.RecipeRowType;
-import de.atomspace.webapp.component.recipe.service.RecipeRepository;
 import de.atomspace.webapp.component.recipe.service.RecipeService;
 
 public class View {
@@ -26,25 +20,20 @@ public class View {
 	//@Property
 	//private Locale currentLocale;
 	
-	//@Persist(PersistenceConstants.SESSION)
-	@SessionState(create=false)
+	@SessionAttribute
 	private Integer recipeListNumber;
 	
 	public Integer getRecipeListNumber() {
 		return recipeListNumber;
 	}
 	
+	
+	
 	@Autowired
 	@Inject
 	private RecipeService recipeService;
 	
-	//@Autowired
-	//@Inject
-	//private RecipeRepository recipeRepository;
-	
 	private Recipe recipe;
-	
-	private String recipeName;
 	
 	private RecipeRow row;
 	
@@ -87,16 +76,10 @@ public class View {
 	}
 	
 	void onActivate(String recipeName){
-		System.out.println("recipeListNumber:"+recipeListNumber);
-		
-		this.recipeName = recipeName;
-		
 		recipe=recipeService.findOneByName(recipeName);
 		if(recipe==null){
 			//TODO FORWARD
-			
 		}
-		
 	}
 	
 	public Recipe getRecipe() {
